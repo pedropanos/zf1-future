@@ -18,7 +18,6 @@ php8.4 vendor/rector/rector/bin/rector process \
   library/Zend/Reflection \
   library/Zend/Serializer
 
-
 php8.4 vendor/rector/rector/bin/rector process \
   library/Zend/Config \
   library/Zend/Cache \
@@ -31,10 +30,6 @@ php8.4 vendor/rector/rector/bin/rector process \
   library/Zend/Service \
   library/Zend/Tool
   
-  
-  
-  
-  
 php8.4 vendor/rector/rector/bin/rector process \
   library/Zend/Auth \
   library/Zend/Acl \
@@ -44,9 +39,58 @@ php8.4 vendor/rector/rector/bin/rector process \
 php8.4 vendor/rector/rector/bin/rector process \
   library/Zend/Controller \
   library/Zend/Form \
-  library/Zend/Db \
-  --dry-run
-
+  library/Zend/Db
 
 php8.4 vendor/rector/rector/bin/rector process library/Zend/Server --dry-run
 php8.4 vendor/rector/rector/bin/rector process library/Zend/Pdf --dry-run
+
+
+Revisando qué componentes exactos se usan en el código completo, sale esta lista de componentes de ZF1 que no usamos:
+Sí: 49 paquetes no se usan directamente en vuestro código, tomando como alcance restAPI + ../application + ../library.
+
+Lista exacta (NO SE USAN 38/87 ):
+
+zf1s/zend-amf, zf1s/zend-captcha, zf1s/zend-cloud, zf1s/zend-codegenerator, zf1s/zend-crypt, zf1s/zend-currency, zf1s/zend-debug, zf1s/zend-dojo, zf1s/zend-dom, zf1s/zend-eventmanager
+zf1s/zend-file, zf1s/zend-ldap, zf1s/zend-markup, zf1s/zend-measure, zf1s/zend-memory, zf1s/zend-mobile, zf1s/zend-oauth, zf1s/zend-openid, zf1s/zend-paginator, zf1s/zend-progressbar
+zf1s/zend-queue, zf1s/zend-reflection, zf1s/zend-search, zf1s/zend-serializer, zf1s/zend-server, zf1s/zend-service-akismet, zf1s/zend-service-audioscrobbler, zf1s/zend-service-console, zf1s/zend-service-delicious, zf1s/zend-service-ebay
+zf1s/zend-service-livedocx, zf1s/zend-service-rackspace, zf1s/zend-service-recaptcha, zf1s/zend-service-shorturl, zf1s/zend-service-slideshare, zf1s/zend-service-strikeiron, zf1s/zend-service-twitter, zf1s/zend-service-windowsazure, zf1s/zend-service-yahoo, zf1s/zend-soap
+zf1s/zend-stdlib, zf1s/zend-tag, zf1s/zend-test, zf1s/zend-text, zf1s/zend-timesync, zf1s/zend-tool, zf1s/zend-uri, zf1s/zend-wildfire, zf1s/zend-xml
+Matiz importante: esto significa “no usados directamente por vuestro código”. Si instalas paquetes sueltos, algunos de esos pueden entrar igual como dependencias transitivas de otros que sí usáis.
+
+Lista exacta (SI SE USAN):
+
+  zf1s/zend-application
+  zf1s/zend-auth
+  zf1s/zend-cache
+  zf1s/zend-config
+  zf1s/zend-controller
+  zf1s/zend-date
+  zf1s/zend-db
+  zf1s/zend-exception
+  zf1s/zend-filter
+  zf1s/zend-form
+  zf1s/zend-json
+  zf1s/zend-layout
+  zf1s/zend-loader
+  zf1s/zend-log
+  zf1s/zend-registry
+  zf1s/zend-session
+  zf1s/zend-translate
+  zf1s/zend-validate
+  zf1s/zend-version
+  zf1s/zend-view
+  zf1s/zend-acl
+  zf1s/zend-mail
+  zf1s/zend-mime
+  zf1s/zend-pdf
+  zf1s/zend-http
+  zf1s/zend-rest
+  zf1s/zend-xmlrpc
+  zf1s/zend-file-transfer
+  zf1s/zend-navigation
+  zf1s/zend-search-lucene
+  zf1s/zend-service-amazon
+  zf1s/zend-service-flickr
+  zf1s/zend-gdata zf1s/zend-feed
+  zf1s/zend-barcode
+  zf1s/zend-console-getopt zf1s/zend-locale
