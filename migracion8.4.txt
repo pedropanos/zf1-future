@@ -1,5 +1,5 @@
 
-php8.4 vendor/rector/rector/bin/rector process library/Zend/Version.php
+php8.4 vendor/rector/rector/bin/rector process library/Zend/Version.php --dry-run
 php8.4 vendor/rector/rector/bin/rector process library/Zend/Registry.php
 php8.4 vendor/rector/rector/bin/rector process library/Zend/Mime
 php8.4 vendor/rector/rector/bin/rector process library/Zend/Tag
@@ -24,3 +24,29 @@ php8.4 vendor/rector/rector/bin/rector process \
   library/Zend/Cache \
   library/Zend/Http \
   library/Zend/Search
+
+php8.4 vendor/rector/rector/bin/rector process \
+  library/Zend/Rest \
+  library/Zend/Queue \
+  library/Zend/Service \
+  library/Zend/Tool
+  
+  
+  
+  
+  
+php8.4 vendor/rector/rector/bin/rector process \
+  library/Zend/Auth \
+  library/Zend/Acl \
+  library/Zend/Session
+  
+  
+php8.4 vendor/rector/rector/bin/rector process \
+  library/Zend/Controller \
+  library/Zend/Form \
+  library/Zend/Db \
+  --dry-run
+
+
+php8.4 vendor/rector/rector/bin/rector process library/Zend/Server --dry-run
+php8.4 vendor/rector/rector/bin/rector process library/Zend/Pdf --dry-run

@@ -128,12 +128,6 @@ class Zend_Tool_Framework_Loader_IncludePathLoader extends Zend_Tool_Framework_L
             "PHPUnit".DIRECTORY_SEPARATOR."Framework",
             "Zend".DIRECTORY_SEPARATOR."OpenId".DIRECTORY_SEPARATOR."Provider"
         ];
-
-        foreach($blacklist AS $blacklitedPattern) {
-            if(strpos($file, $blacklitedPattern) !== false) {
-                return true;
-            }
-        }
-        return false;
+        return array_any($blacklist, fn($blacklitedPattern) => strpos($file, $blacklitedPattern) !== false);
     }
 }
