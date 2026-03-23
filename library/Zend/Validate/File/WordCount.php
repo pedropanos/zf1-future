@@ -61,6 +61,7 @@ class Zend_Validate_File_WordCount extends Zend_Validate_File_Count
      * @param  array  $file  File data from Zend_File_Transfer
      * @return boolean
      */
+    #[\Override]
     public function isValid($value, $file = null)
     {
         // Is file readable ?
@@ -89,6 +90,7 @@ class Zend_Validate_File_WordCount extends Zend_Validate_File_Count
      * @param  string $errorType
      * @return false
      */
+    #[\Override]
     protected function _throw($file, $errorType)
     {
         if ($file !== null) {

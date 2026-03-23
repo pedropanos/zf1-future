@@ -312,8 +312,8 @@ abstract class Zend_Validate_Abstract implements Zend_Validate_Interface
      * Returns array of validation failure message codes
      *
      * @return array
-     * @deprecated Since 1.5.0
      */
+    #[\Deprecated(message: 'Since 1.5.0')]
     public function getErrors()
     {
         return $this->_errors;

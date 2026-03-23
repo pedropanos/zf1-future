@@ -179,8 +179,8 @@ class Zend_Filter_Input
     /**
      * @param mixed $namespaces
      * @return Zend_Filter_Input
-     * @deprecated since 1.5.0RC1 - use addFilterPrefixPath() or addValidatorPrefixPath instead.
      */
+    #[\Deprecated(message: 'since 1.5.0RC1 - use addFilterPrefixPath() or addValidatorPrefixPath instead.')]
     public function addNamespace($namespaces)
     {
         if (!is_array($namespaces)) {

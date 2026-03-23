@@ -151,6 +151,7 @@ class Zend_Validate_File_IsImage extends Zend_Validate_File_MimeType
      * @param  string $errorType
      * @return false
      */
+    #[\Override]
     protected function _throw($file, $errorType)
     {
         $this->_value = $file['name'];

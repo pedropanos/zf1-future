@@ -104,6 +104,7 @@ class Zend_Validate_Barcode_Royalmail extends Zend_Validate_Barcode_AdapterAbstr
      * @param  string $value The barcode to check for allowed characters
      * @return boolean
      */
+    #[\Override]
     public function checkChars($value)
     {
         if ($value[0] == '(') {

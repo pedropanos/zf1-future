@@ -117,9 +117,9 @@ class Zend_Filter_StripTags implements Zend_Filter_Interface
      *
      * This setting is now deprecated and ignored internally.
      *
-     * @deprecated
      * @return bool
      */
+    #[\Deprecated]
     public function getCommentsAllowed()
     {
         return $this->commentsAllowed;
@@ -130,10 +130,10 @@ class Zend_Filter_StripTags implements Zend_Filter_Interface
      *
      * This setting is now deprecated and ignored internally.
      *
-     * @deprecated
      * @param  boolean $commentsAllowed
      * @return $this
      */
+    #[\Deprecated]
     public function setCommentsAllowed($commentsAllowed)
     {
        $this->commentsAllowed = (bool) $commentsAllowed;

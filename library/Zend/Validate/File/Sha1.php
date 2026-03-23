@@ -96,6 +96,7 @@ class Zend_Validate_File_Sha1 extends Zend_Validate_File_Hash
      * @param  string|array $options
      * @return $this
      */
+    #[\Override]
     public function setHash($options)
     {
         if (!is_array($options)) {
@@ -125,6 +126,7 @@ class Zend_Validate_File_Sha1 extends Zend_Validate_File_Hash
      * @param  string|array $options
      * @return $this
      */
+    #[\Override]
     public function addHash($options)
     {
         if (!is_array($options)) {
@@ -157,6 +159,7 @@ class Zend_Validate_File_Sha1 extends Zend_Validate_File_Hash
      * @param  array  $file  File data from Zend_File_Transfer
      * @return boolean
      */
+    #[\Override]
     public function isValid($value, $file = null)
     {
         // Is file readable ?

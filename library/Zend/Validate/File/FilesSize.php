@@ -102,6 +102,7 @@ class Zend_Validate_File_FilesSize extends Zend_Validate_File_Size
      * @param  array        $file  File data from Zend_File_Transfer
      * @return boolean
      */
+    #[\Override]
     public function isValid($value, $file = null)
     {
         require_once 'Zend/Loader.php';

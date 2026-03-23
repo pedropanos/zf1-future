@@ -101,6 +101,7 @@ class Zend_Filter_Word_SeparatorToSeparator extends Zend_Filter_PregReplace
      * @param  string $value
      * @return string
      */
+    #[\Override]
     public function filter($value)
     {
         return $this->_separatorToSeparatorFilter($value);

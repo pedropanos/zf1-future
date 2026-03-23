@@ -129,10 +129,10 @@ class Zend_Filter_Inflector implements Zend_Filter_Interface
     /**
      * Use Zend_Config object to set object state
      *
-     * @deprecated Use setOptions() instead
      * @param  Zend_Config $config
      * @return Zend_Filter_Inflector
      */
+    #[\Deprecated(message: 'Use setOptions() instead')]
     public function setConfig(Zend_Config $config)
     {
         return $this->setOptions($config);

@@ -212,6 +212,7 @@ class Zend_Validate_EmailAddress extends Zend_Validate_Abstract
      * @return $this
      * @throws Zend_Validate_Exception
      */
+    #[\Override]
     public function setMessage($messageString, $messageKey = null)
     {
         if ($messageKey === null) {

@@ -56,6 +56,7 @@ class Zend_Validate_Barcode_Issn extends Zend_Validate_Barcode_AdapterAbstract
      * @param  string $value The barcode to check for allowed characters
      * @return boolean
      */
+    #[\Override]
     public function checkChars($value)
     {
         if (strlen($value) !== 8) {
@@ -73,6 +74,7 @@ class Zend_Validate_Barcode_Issn extends Zend_Validate_Barcode_AdapterAbstract
      * @param  string $value The barcode to check the checksum for
      * @return boolean
      */
+    #[\Override]
     public function checksum($value)
     {
         if (strlen($value) === 8) {

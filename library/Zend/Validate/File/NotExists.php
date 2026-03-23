@@ -55,6 +55,7 @@ class Zend_Validate_File_NotExists extends Zend_Validate_File_Exists
      * @param  array   $file  File data from Zend_File_Transfer
      * @return boolean
      */
+    #[\Override]
     public function isValid($value, $file = null)
     {
         $directories = $this->getDirectory(true);

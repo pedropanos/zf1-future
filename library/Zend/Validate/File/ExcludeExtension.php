@@ -58,6 +58,7 @@ class Zend_Validate_File_ExcludeExtension extends Zend_Validate_File_Extension
      * @param  array   $file  File data from Zend_File_Transfer
      * @return boolean
      */
+    #[\Override]
     public function isValid($value, $file = null)
     {
         // Is file readable ?
