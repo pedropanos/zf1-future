@@ -13,6 +13,7 @@ use Rector\Php83\Rector\ClassConst\AddTypeToConstRector;
 use Rector\Php83\Rector\ClassMethod\AddOverrideAttributeToOverriddenMethodsRector;
 use Rector\Php84\Rector\Class_\DeprecatedAnnotationToDeprecatedAttributeRector;
 use Rector\Php84\Rector\Foreach_\ForeachToArrayAllRector;
+use Rector\Php84\Rector\Foreach_\ForeachToArrayAnyRector;
 use Rector\Renaming\Rector\MethodCall\RenameMethodRector;
 use Rector\Renaming\ValueObject\MethodCallRename;
 use Rector\Set\ValueObject\SetList;
@@ -43,13 +44,7 @@ return RectorConfig::configure()
         AddTypeToConstRector::class,
         DeprecatedAnnotationToDeprecatedAttributeRector::class,
         ForeachToArrayAllRector::class,
-
-        //mejor quitarlas
-        RemoveNullArgOnNullDefaultParamRector::class,
-        RemoveUnusedPrivatePropertyRector::class,
-        RemoveDeadZeroAndOneOperationRector::class,
-        RecastingRemovalRector::class,
-        RemoveUselessParamTagRector::class,
+        ForeachToArrayAnyRector::class,
     ])
     ->withConfiguredRule(RenameMethodRector::class, [
         new MethodCallRename('Zend_Acl', 'add', 'addResource'),
