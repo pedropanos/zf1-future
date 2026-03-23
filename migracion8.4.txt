@@ -1,0 +1,26 @@
+
+php8.4 vendor/rector/rector/bin/rector process library/Zend/Version.php
+php8.4 vendor/rector/rector/bin/rector process library/Zend/Registry.php
+php8.4 vendor/rector/rector/bin/rector process library/Zend/Mime
+php8.4 vendor/rector/rector/bin/rector process library/Zend/Tag
+php8.4 vendor/rector/rector/bin/rector process library/Zend/Text
+php8.4 vendor/rector/rector/bin/rector process library/Zend/Uri
+php8.4 vendor/rector/rector/bin/rector process library/Zend/Loader
+php8.4 vendor/rector/rector/bin/rector process library/Zend/Locale
+php8.4 vendor/rector/rector/bin/rector process library/Zend/Translate
+php8.4 vendor/rector/rector/bin/rector process library/Zend/View
+
+php8.4 vendor/rector/rector/bin/rector process \
+  library/Zend/Log \
+  library/Zend/Mail \
+  library/Zend/Navigation \
+  library/Zend/Paginator \
+  library/Zend/Reflection \
+  library/Zend/Serializer
+
+
+php8.4 vendor/rector/rector/bin/rector process \
+  library/Zend/Config \
+  library/Zend/Cache \
+  library/Zend/Http \
+  library/Zend/Search
