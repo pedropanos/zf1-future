@@ -4,6 +4,12 @@ declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
 use Rector\CodeQuality\Rector as CodeQuality;
+use Rector\DeadCode\Rector\Cast\RecastingRemovalRector;
+use Rector\DeadCode\Rector\ClassMethod\RemoveUselessParamTagRector;
+use Rector\DeadCode\Rector\MethodCall\RemoveNullArgOnNullDefaultParamRector;
+use Rector\DeadCode\Rector\Plus\RemoveDeadZeroAndOneOperationRector;
+use Rector\DeadCode\Rector\Property\RemoveUnusedPrivatePropertyRector;
+use Rector\Php83\Rector\ClassConst\AddTypeToConstRector;
 use Rector\Php83\Rector\ClassMethod\AddOverrideAttributeToOverriddenMethodsRector;
 use Rector\Renaming\Rector\MethodCall\RenameMethodRector;
 use Rector\Renaming\ValueObject\MethodCallRename;
@@ -30,7 +36,16 @@ return RectorConfig::configure()
         __DIR__ . '/tests/Zend/Db/Select/StaticTest.php',
         __DIR__ . '/tests/Zend/OpenId/ConsumerTest.php',
 
+        //Mucho ruido
         AddOverrideAttributeToOverriddenMethodsRector::class,
+        AddTypeToConstRector::class,
+
+        //mejor quitarlas
+        RemoveNullArgOnNullDefaultParamRector::class,
+        RemoveUnusedPrivatePropertyRector::class,
+        RemoveDeadZeroAndOneOperationRector::class,
+        RecastingRemovalRector::class,
+        RemoveUselessParamTagRector::class,
     ])
     ->withConfiguredRule(RenameMethodRector::class, [
         new MethodCallRename('Zend_Acl', 'add', 'addResource'),
