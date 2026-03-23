@@ -11,6 +11,7 @@ use Rector\DeadCode\Rector\Plus\RemoveDeadZeroAndOneOperationRector;
 use Rector\DeadCode\Rector\Property\RemoveUnusedPrivatePropertyRector;
 use Rector\Php83\Rector\ClassConst\AddTypeToConstRector;
 use Rector\Php83\Rector\ClassMethod\AddOverrideAttributeToOverriddenMethodsRector;
+use Rector\Php84\Rector\Class_\DeprecatedAnnotationToDeprecatedAttributeRector;
 use Rector\Renaming\Rector\MethodCall\RenameMethodRector;
 use Rector\Renaming\ValueObject\MethodCallRename;
 use Rector\Set\ValueObject\SetList;
@@ -39,6 +40,7 @@ return RectorConfig::configure()
         //Mucho ruido
         AddOverrideAttributeToOverriddenMethodsRector::class,
         AddTypeToConstRector::class,
+        DeprecatedAnnotationToDeprecatedAttributeRector::class,
 
         //mejor quitarlas
         RemoveNullArgOnNullDefaultParamRector::class,
