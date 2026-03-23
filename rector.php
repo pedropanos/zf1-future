@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
 use Rector\CodeQuality\Rector as CodeQuality;
+use Rector\Php83\Rector\ClassMethod\AddOverrideAttributeToOverriddenMethodsRector;
 use Rector\Renaming\Rector\MethodCall\RenameMethodRector;
 use Rector\Renaming\ValueObject\MethodCallRename;
 use Rector\Set\ValueObject\SetList;
@@ -28,6 +29,8 @@ return RectorConfig::configure()
         __DIR__ . '/tests/Zend/Session/SessionTest.php',
         __DIR__ . '/tests/Zend/Db/Select/StaticTest.php',
         __DIR__ . '/tests/Zend/OpenId/ConsumerTest.php',
+
+        AddOverrideAttributeToOverriddenMethodsRector::class,
     ])
     ->withConfiguredRule(RenameMethodRector::class, [
         new MethodCallRename('Zend_Acl', 'add', 'addResource'),
