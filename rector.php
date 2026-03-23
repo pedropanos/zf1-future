@@ -14,6 +14,7 @@ use Rector\Php83\Rector\ClassMethod\AddOverrideAttributeToOverriddenMethodsRecto
 use Rector\Php84\Rector\Class_\DeprecatedAnnotationToDeprecatedAttributeRector;
 use Rector\Php84\Rector\Foreach_\ForeachToArrayAllRector;
 use Rector\Php84\Rector\Foreach_\ForeachToArrayAnyRector;
+use Rector\Php84\Rector\MethodCall\NewMethodCallWithoutParenthesesRector;
 use Rector\Renaming\Rector\MethodCall\RenameMethodRector;
 use Rector\Renaming\ValueObject\MethodCallRename;
 use Rector\Set\ValueObject\SetList;
@@ -45,6 +46,7 @@ return RectorConfig::configure()
         DeprecatedAnnotationToDeprecatedAttributeRector::class,
         ForeachToArrayAllRector::class,
         ForeachToArrayAnyRector::class,
+        NewMethodCallWithoutParenthesesRector::class,
     ])
     ->withConfiguredRule(RenameMethodRector::class, [
         new MethodCallRename('Zend_Acl', 'add', 'addResource'),
