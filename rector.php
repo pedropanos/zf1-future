@@ -4,20 +4,8 @@ declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
 use Rector\CodeQuality\Rector as CodeQuality;
-use Rector\Php53\Rector as Php53;
-use Rector\Php54\Rector as Php54;
-use Rector\Php55\Rector as Php55;
-use Rector\Php56\Rector as Php56;
-use Rector\Php70\Rector as Php70;
-use Rector\Php71\Rector as Php71;
-
-use Rector\Php82\Rector as Php82;
-use Rector\Php83\Rector as Php83;
-use Rector\Php84\Rector as Php84;
-
 use Rector\Renaming\Rector\MethodCall\RenameMethodRector;
 use Rector\Renaming\ValueObject\MethodCallRename;
-use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
 use Rector\ValueObject\PhpVersion;
 
@@ -28,41 +16,30 @@ return RectorConfig::configure()
         __DIR__ . '/demos',
     ])
     ->withRules([
-        CodeQuality\Class_\CompleteDynamicPropertiesRector::class
+        CodeQuality\Class_\CompleteDynamicPropertiesRector::class,
     ])
     ->withSkip([
-        # see https://github.com/Shardj/zf1-future/pull/453
+        // see https://github.com/Shardj/zf1-future/pull/453
         CodeQuality\Class_\CompleteDynamicPropertiesRector::class => [
             __DIR__ . '/library/Zend/Pdf/Element.php',
         ],
-        Php53\FuncCall\DirNameFileConstantToDirConstantRector::class,
-        Php53\Ternary\TernaryToElvisRector::class,
-        Php54\Array_\LongArrayToShortArrayRector::class,
-        Php55\Class_\ClassConstantToSelfClassRector::class,
-        Php55\String_\StringClassNameToClassConstantRector::class,
-        Php56\FuncCall\PowToExpRector::class,
-        Php70\FuncCall\MultiDirnameRector::class,
-        Php70\FuncCall\RandomFunctionRector::class,
-        Php70\StmtsAwareInterface\IfIssetToCoalescingRector::class,
-        Php70\Ternary\TernaryToNullCoalescingRector::class,
-        Php70\Variable\WrapVariableVariableNameInCurlyBracesRector::class,
-        Php71\FuncCall\RemoveExtraParametersRector::class,
-        Php71\List_\ListToArrayDestructRector::class,
+
         __DIR__ . '/tests/Zend/Loader/_files/ParseError.php',
         __DIR__ . '/tests/Zend/Session/SessionTest.php',
+        __DIR__ . '/tests/Zend/Db/Select/StaticTest.php',
+        __DIR__ . '/tests/Zend/OpenId/ConsumerTest.php',
     ])
     ->withConfiguredRule(RenameMethodRector::class, [
         new MethodCallRename('Zend_Acl', 'add', 'addResource'),
     ])
     ->withSets([
-        //LevelSetList::UP_TO_PHP_82
         SetList::PHP_82,
         SetList::PHP_83,
         SetList::PHP_84,
     ])
     ->withPreparedSets(
-        deadCode: true,
-        codeQuality: true,
+        deadCode: false,  //PPP primera pasada más estrictamente orientada a compatibilidad,
+        codeQuality: false,  //PPP bajar agresividad de los cambios
         typeDeclarations: false
     )
     ->withPhpVersion(PhpVersion::PHP_84);
