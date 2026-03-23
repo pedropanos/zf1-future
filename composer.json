@@ -1,13 +1,13 @@
 {
-    "name": "shardj/zf1-future",
-    "description": "Zend Framework 1. The aim is to keep ZF1 working with the latest PHP versions",
+    "name": "pedropanos/zf1-future",
+    "description": "Zend Framework 1 fork maintained for PHP 8.2 and PHP 8.4 compatibility",
     "type": "library",
-    "version": "1.25.0",
+    "version": "1.25.1",
     "keywords": [
         "framework",
         "zf1"
     ],
-    "homepage": "https://github.com/Shardj/zf1-future/",
+    "homepage": "https://github.com/pedropanos/zf1-future/",
     "license": "BSD-3-Clause",
     "require": {
         "php": ">=8.2",
@@ -44,19 +44,21 @@
             "dealerdirect/phpcodesniffer-composer-installer": true
         },
         "platform": {
-            "php": "7.4"
+            "php": "8.2.0"
         }
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.12.x-dev"
+            "dev-master": "1.25.x-dev",
+            "dev-chore/php84-rector": "1.25.x-dev"
         }
     },
     "archive": {
         "exclude": ["/demos", "/documentation", "/tests"]
     },
     "replace": {
-        "zendframework/zendframework1": ">=1.12.20"
+        "zendframework/zendframework1": ">=1.12.20",
+        "shardj/zf1-future": "self.version"
     },
     "scripts": {
         "lint": "parallel-lint --exclude vendor --exclude tests/Zend/Loader/_files/ParseError.php .",

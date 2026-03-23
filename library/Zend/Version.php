@@ -78,7 +78,7 @@ final class Zend_Version
                 ]
             ];
             $context = stream_context_create($opts);
-            $content = file_get_contents('https://api.github.com/repos/Shardj/zf1-future/releases/latest', false, $context);
+            $content = file_get_contents('https://api.github.com/repos/pedropanos/zf1-future/releases/latest', false, $context);
 
             if (false !== $content) {
                 $releaseName = explode('-', json_decode($content, true)['name']);

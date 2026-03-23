@@ -278,15 +278,20 @@ class Zend_Session extends Zend_Session_Abstract
             return;
         }
 
-        $result = session_set_save_handler(
-            [&$saveHandler, 'open'],
-            [&$saveHandler, 'close'],
-            [&$saveHandler, 'read'],
-            [&$saveHandler, 'write'],
-            [&$saveHandler, 'destroy'],
-            [&$saveHandler, 'gc']
+        if ($saveHandler instanceof SessionHandlerInterface) {
+            // PHP 8.4 deprecates passing the session callbacks individually.
+            $result = session_set_save_handler($saveHandler, true);
+        } else {
+            $result = session_set_save_handler(
+                [&$saveHandler, 'open'],
+                [&$saveHandler, 'close'],
+                [&$saveHandler, 'read'],
+                [&$saveHandler, 'write'],
+                [&$saveHandler, 'destroy'],
+                [&$saveHandler, 'gc']
             );
-        register_shutdown_function('session_write_close');
+            register_shutdown_function('session_write_close');
+        }
 
         if (!$result) {
             throw new Zend_Session_Exception('Unable to set session handler');
@@ -430,21 +435,21 @@ class Zend_Session extends Zend_Session_Abstract
      */
     public static function start($options = false)
     {
+        if (self::$_sessionStarted) {
+            if (self::$_destroyed) {
+                require_once 'Zend/Session/Exception.php';
+                throw new Zend_Session_Exception('The session was explicitly destroyed during this request, attempting to re-start is not allowed.');
+            }
+
+            return;
+        }
+
         // Check to see if we've been passed an invalid session ID
         if ( self::getId() && !self::_checkId(self::getId()) ) {
             // Generate a valid, temporary replacement
             self::setId(md5(self::getId()));
             // Force a regenerate after session is started
             self::$_regenerateIdState = -1;
-        }
-
-        if (self::$_sessionStarted && self::$_destroyed) {
-            require_once 'Zend/Session/Exception.php';
-            throw new Zend_Session_Exception('The session was explicitly destroyed during this request, attempting to re-start is not allowed.');
-        }
-
-        if (self::$_sessionStarted) {
-            return; // already started
         }
 
         // make sure our default options (at the least) have been set
