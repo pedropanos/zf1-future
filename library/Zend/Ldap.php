@@ -807,7 +807,7 @@ class Zend_Ldap
         /* Only OpenLDAP 2.2 + supports URLs so if SSL is not requested, just
          * use the old form.
          */
-        $resource = ($useUri) ? @ldap_connect($this->_connectString) : @ldap_connect($host, $port);
+        $resource = ($useUri) ? @ldap_connect($this->_connectString) : @ldap_connect("{$host}:{$port}");
 
         if ($this->isConnection($resource) === true) {
             $this->_resource = $resource;
